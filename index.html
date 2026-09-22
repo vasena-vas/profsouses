@@ -216,7 +216,7 @@
   <header>
     <div class="header-left">
       <!-- Логотип-заглушка (маленький SVG, чтобы файл не ломался) -->
-      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%233b82f6'/><text x='32' y='42' font-size='30' text-anchor='middle' fill='white' font-family='sans-serif'>П</text></svg>" alt="Логотип профкома">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%233b82f6'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>П</text></svg>" alt="Логотип профкома">
       <div>
         <p class="eyebrow">Первичная профсоюзная организация студентов и аспирантов</p>
         <h1>Профсоюзное членство — 2026</h1>
@@ -340,15 +340,15 @@ document.getElementById('legendTotal').innerHTML = legendHtml('total');
 
 // ===== Google Sheets: конфигурация (ОПУБЛИКОВАННЫЕ CSV-ССЫЛКИ) =====
 const SHEETS = [
-  { name:'ИЭиАС', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=587953836&single=true&output=csv' },
-  { name:'ИММиМ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=238520803&single=true&output=csv' },
-  { name:'ППиСР', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1715360738&single=true&output=csv' },
-  { name:'НИФиЯ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=174287730&single=true&output=csv' },
-  { name:'ИГДиТ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=250833869&single=true&output=csv' },
-  { name:'ИЕиС',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=787097727&single=true&output=csv' },
-  { name:'ФФКиСМ',url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=486216315&single=true&output=csv' },
-  { name:'ИСАиИ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1476580937&single=true&output=csv' },
-  { name:'ИЭиУ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=865508239&single=true&output=csv' }
+  { name:'ИЭиАС',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=587953836&single=true&output=csv' },
+  { name:'ИММиМ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=238520803&single=true&output=csv' },
+  { name:'ППиСР',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1715360738&single=true&output=csv' },
+  { name:'НИФиЯ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=174287730&single=true&output=csv' },
+  { name:'ИГДиТ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=250833869&single=true&output=csv' },
+  { name:'ИЕиС',   url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=787097727&single=true&output=csv' },
+  { name:'ФФКиСМ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=486216315&single=true&output=csv' },
+  { name:'ИСАиИ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1476580937&single=true&output=csv' },
+  { name:'ИЭиУ',   url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=865508239&single=true&output=csv' }
 ];
 
 // ===== CSV parser =====
@@ -466,9 +466,9 @@ async function loadAll(){
       const magasp = parsed.groups.filter(function(g){return g.level === 'magasp';});
       // Если уровень не определён — пробуем эвристику по названию группы
       if(bak.length === 0 && magasp.length === parsed.groups.length){
-        const bakGroups = parsed.groups.filter(function(g){return /б-\d|бак/.test(g.g);});
+        const bakGroups = parsed.groups.filter(function(g){return /б-\d|бак/i.test(g.g);});
         if(bakGroups.length > 0){
-          const magGroups = parsed.groups.filter(function(g){return !/б-\d|бак/.test(g.g);});
+          const magGroups = parsed.groups.filter(function(g){return !/б-\d|бак/i.test(g.g);});
           bak.push(...bakGroups); magasp.length = 0; magasp.push(...magGroups);
         }
       }
