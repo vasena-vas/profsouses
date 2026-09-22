@@ -215,4 +215,433 @@
 
   <header>
     <div class="header-left">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAc8AAAHQCAIAAABImnYyAAAQAElEQVR4AexdB2AVVdb+zswrCSShqgu4dgX77ipF7BTb/isEBCtFXXUloAIWil0pioAKwa4UdcUCwd21UewoBF07WABbghQpKSSvzD3/d2deXhKaIOhaGL9337nnnnvuue3MmTuP6OjO67c9AkaVUE8t9MdfRn09agwp3cyVaoUSREI1plqhWq5aorpOdbXq96orjP63SF/+RJ99W/Onrxr/zPeDxn1yzfhF5w5+9dzBr501eO4xPZ5u22PaobmP/bH9hD3aP9Cs/f27d3iAcA662eLAW53Nw21xE6vs2f6BvTrc27bH9KN7PXPseU+fNej1S4e9e/W4hSMmfj1pZuW/5ukrC/WLEl2puta3rcy3M6aaVDW6xauqOPg2JvjeRBVjNl3k6WYKNqFjJ+s3NQIOdl6/+RGQLfWQy3lLxTXLfD0iogDhAUkfcYCIATE4lRaoAD4r0ncWlj0+/b37J71944hnrxw89cwedx7fftCfWl++/4F/P6HDJZ27XHpu775XD77xmmtvHjfhgbvGPzCt4D/PFDw3reDf8xf8t3DBfxcu/HTZsuXfLitetmxZsb2WbY2pNK+4eFlRcXFR0bLCBe8Wzn933jvvFsz4z8RHn8if8MCtt43t0+/Kc3rn/a3rJUe0vugvrS8/LfeW7j1HXz98xh3jZv1r5pJX5y1bXoJKWMTAHtmusXfsKftLKAdBbfeDgWFzAbFxurkigWwsvJPzexiBnd72tzvL9IhEams7ik3P9YZOwdTwJTCw8IdIEDg7qiQ3ARD0R+uB5aUoXKiTC5ZeM2LmOXmP/rndzfu3Gnxkx8vbdRna59rJ14x8cvyU16fMePfVd5Z9vkxWltapcHZbr40qpFFMGsalQUzrxTTbk6wkMglPI56GFWFIyMCF9U3sg6gRYVY33QtUXQaOhb0luFRiEDGIUi0RR3YcWWyxUuvHtPF6NFpeVuedRaWvLFgxYcrrI+59odfl408//7b921y2T6tr/tbjvmtGzB4/6cPZ88vfXZTk/YOdZZcJj+ZUNVc9PtWcFKXqVZcq0h6atYmU0Ca+OLqmhvgmJKwqSmyqZCdvx4/AjtP4A2t3xzW0U9P/cgS2YW/Sp/nOgFU8OERCbXxHXxMTqQS+K8U7Cysem/7h0OEFZ/QcfVjrfoe2vuiULpf2H3zn/VNe+s/LC79Y5q0oy1wvu1TKrpVoFHMaxVA/hpwEcpJ0dqBXreNJ3SQyE5qR1AwPUSNMwx7CBq76TtawaYaR9K1VEPHN2spRVN/nWiUkXAPXg9WfpCtH1JM6SdTxkJ3UrDhyLKRBpTZYrw0rsEsldllRlvHaO9/cO/nFG2575Kzeg07p/I9DWvXt2mPs0OEz7p089+V5y8th4/dKMPh14kjF+J7vUbXKQhHeKqr2l6bZVcWb/a6qslmBnQW/1hHYObW/VpnLw2
+      <!-- Логотип-заглушка (маленький SVG, чтобы файл не ломался) -->
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%233b82f6'/><text x='32' y='42' font-size='30' text-anchor='middle' fill='white' font-family='sans-serif'>П</text></svg>" alt="Логотип профкома">
+      <div>
+        <p class="eyebrow">Первичная профсоюзная организация студентов и аспирантов</p>
+        <h1>Профсоюзное членство — 2026</h1>
+      </div>
+    </div>
+    <div class="updated">По данным листов институтов<br>(Google Таблица)</div>
+  </header>
+
+  <div class="deadline-banner">
+    <div class="txt">Дедлайн по вступаемости — отчитаться нужно до <b>5 октября 2026</b></div>
+    <div class="days" id="deadlineDays"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="label">По приказу</div><div class="value" id="statOrder">—</div></div>
+    <div class="stat"><div class="label">Исключения</div><div class="value" id="statExcl">—</div></div>
+    <div class="stat"><div class="label">Доступно</div><div class="value" id="statAvail">—</div></div>
+    <div class="stat accent"><div class="label">Заявлений</div><div class="value" id="statApps">—</div></div>
+    <div class="stat total"><div class="label">Общая вступаемость</div><div class="value" id="statPct">—</div></div>
+  </div>
+
+  <h2 class="section-title"><span class="dot"></span>По институтам<span class="count-pill" id="instCountPill"></span></h2>
+  <div class="legend" id="legendTotal"></div>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Институт</th>
+          <th class="num">По приказу</th>
+          <th class="num">Исключения</th>
+          <th class="num">Доступно</th>
+          <th class="num">Заявления</th>
+          <th>% вступаемости</th>
+        </tr>
+      </thead>
+      <tbody id="instTableBody"><tr><td colspan="6" class="empty-note">Загрузка данных…</td></tr></tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title"><span class="dot"></span>Детально по институту</h2>
+
+  <div class="toggle-row wrap-scroll" id="instToggle"></div>
+  <div class="level-toggle" id="levelToggle">
+    <button class="toggle-btn active" data-level="total">Общее членство</button>
+    <button class="toggle-btn" data-level="bak">Бакалавриат</button>
+    <button class="toggle-btn" data-level="magasp">Магистратура + Аспирантура</button>
+  </div>
+
+  <div class="inst-panel" id="instPanel">
+    <div class="empty-note">Загрузка данных…</div>
+  </div>
+
+  <footer>Все данные — с листов институтов Google Таблицы (лист «Общее» не использовался). Файл статичен на момент формирования — при обновлении таблицы значения нужно обновить вручную.</footer>
+</div>
+
+<script>
+// ===== Color scales =====
+const SCALES = {
+  bak:   {purple:95, green:85, yellow:70, orange:65},
+  total: {purple:90, green:80, yellow:65, orange:60}
+};
+const COLOR_META = {
+  purple:{cls:'purple', label:'Отлично'},
+  green: {cls:'green',  label:'Хорошо'},
+  yellow:{cls:'yellow', label:'Нормально'},
+  orange:{cls:'orange', label:'Внимание'},
+  red:   {cls:'red',    label:'Нужно стараться'}
+};
+
+function colorFor(pct, scaleName){
+  const s = SCALES[scaleName];
+  if(pct >= s.purple) return COLOR_META.purple;
+  if(pct >= s.green)  return COLOR_META.green;
+  if(pct >= s.yellow) return COLOR_META.yellow;
+  if(pct >= s.orange) return COLOR_META.orange;
+  return COLOR_META.red;
+}
+
+function fmt(n){ return Math.round(n).toLocaleString("ru-RU"); }
+function fmtPct(p){ return p.toFixed(1).replace('.',','); }
+
+function pctCellHtml(pct, scaleName){
+  const meta = colorFor(pct, scaleName);
+  const cap = meta.cls === 'red' ? '<div class="pct-caption">' + meta.label + '</div>' : '';
+  return '<div class="pct-cell"><div class="pct-bar"><span class="bar-' + meta.cls + '" style="width:' + Math.min(pct,100) + '%"></span></div>' +
+    '<div class="pct-wrap"><div class="pct-badge c-' + meta.cls + '">' + fmtPct(pct) + '%</div>' + cap + '</div></div>';
+}
+
+function legendHtml(scaleName){
+  const s = SCALES[scaleName];
+  const items = [
+    {cls:'purple', txt:'≥ ' + s.purple + '% — отлично'},
+    {cls:'green',  txt:s.green + '–' + s.purple + '% — хорошо'},
+    {cls:'yellow', txt:s.yellow + '–' + s.green + '% — нормально'},
+    {cls:'orange', txt:s.orange + '–' + s.yellow + '% — внимание'},
+    {cls:'red',    txt:'< ' + s.orange + '% — нужно стараться'}
+  ];
+  return items.map(function(i){
+    return '<div class="item"><span class="dot2 c-' + i.cls + '"></span>' + i.txt + '</div>';
+  }).join('');
+}
+document.getElementById('legendTotal').innerHTML = legendHtml('total');
+
+// ===== Deadline countdown =====
+(function(){
+  const deadline = new Date('2026-10-05T23:59:59');
+  const now = new Date();
+  const diffMs = deadline - now;
+  const el = document.getElementById('deadlineDays');
+  if(diffMs <= 0){
+    el.textContent = 'Срок истёк';
+  } else {
+    const days = Math.ceil(diffMs / (1000*60*60*24));
+    let word = 'дней';
+    const mod10 = days % 10, mod100 = days % 100;
+    if(mod10===1 && mod100!==11) word='день';
+    else if(mod10>=2 && mod10<=4 && (mod100<10||mod100>=20)) word='дня';
+    el.textContent = 'Осталось ' + days + ' ' + word;
+  }
+})();
+
+// ===== Google Sheets: конфигурация (ОПУБЛИКОВАННЫЕ CSV-ССЫЛКИ) =====
+const SHEETS = [
+  { name:'ИЭиАС', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=587953836&single=true&output=csv' },
+  { name:'ИММиМ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=238520803&single=true&output=csv' },
+  { name:'ППиСР', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1715360738&single=true&output=csv' },
+  { name:'НИФиЯ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=174287730&single=true&output=csv' },
+  { name:'ИГДиТ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=250833869&single=true&output=csv' },
+  { name:'ИЕиС',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=787097727&single=true&output=csv' },
+  { name:'ФФКиСМ',url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=486216315&single=true&output=csv' },
+  { name:'ИСАиИ', url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=1476580937&single=true&output=csv' },
+  { name:'ИЭиУ',  url:'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3pQT1SbM2YZBD3luM8g7dru8wM-8bxups9R8JWufLOAvT7mhcRH5l7KH6eOkkDB9J5_9ndXAxp_R/pub?gid=865508239&single=true&output=csv' }
+];
+
+// ===== CSV parser =====
+function parseCSV(text){
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for(let i=0; i<text.length; i++){
+    const ch = text[i];
+    if(inQuotes){
+      if(ch === '"'){
+        if(text[i+1] === '"'){ field += '"'; i++; }
+        else inQuotes = false;
+      } else field += ch;
+    } else {
+      if(ch === '"') inQuotes = true;
+      else if(ch === ','){ row.push(field); field = ''; }
+      else if(ch === '\n'){ row.push(field); rows.push(row); row = []; field = ''; }
+      else if(ch === '\r'){ /* skip */ }
+      else field += ch;
+    }
+  }
+  if(field !== '' || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+// ===== Получение CSV по прямой ссылке (с обходом кэша) =====
+async function fetchSheetCSV(url){
+  const bust = (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+  const resp = await fetch(url + bust, { cache: 'no-store' });
+  if(!resp.ok) throw new Error('HTTP ' + resp.status);
+  return resp.text();
+}
+
+// ===== Разбор листа института =====
+function parseInstituteSheet(csvText){
+  const rows = parseCSV(csvText);
+  // Ищем строку заголовка: содержит "По приказу" или "Доступно"
+  let headerRow = -1;
+  for(let i=0; i<rows.length; i++){
+    const r = rows[i].map(function(c){return (c||'').trim().toLowerCase();});
+    if(r.some(function(c){return c.includes('по приказу') || c.includes('доступно') || c.includes('заявл');})){
+      headerRow = i; break;
+    }
+  }
+  if(headerRow === -1) throw new Error('Не найден заголовок');
+
+  const header = rows[headerRow].map(function(c){return (c||'').trim().toLowerCase();});
+  const colIdx = {
+    group: header.findIndex(function(c){return c.includes('групп') || c.includes('назван');}),
+    order: header.findIndex(function(c){return c.includes('по приказу') || c.includes('приказ');}),
+    excl:  header.findIndex(function(c){return c.includes('исключ');}),
+    avail: header.findIndex(function(c){return c.includes('доступно');}),
+    apps:  header.findIndex(function(c){return c.includes('заявл');}),
+    pct:   header.findIndex(function(c){return c.includes('%') || c.includes('вступаем');})
+  };
+
+  // Определяем уровень: если есть слово «бакалавр» в заголовке группы — bak, иначе magasp
+  const groupHeader = (colIdx.group >= 0) ? header[colIdx.group] : '';
+  let level = 'magasp';
+  if(groupHeader.includes('бакалавр') || groupHeader.includes('бак')) level = 'bak';
+
+  const groups = [];
+  for(let i=headerRow+1; i<rows.length; i++){
+    const r = rows[i];
+    if(!r || r.length === 0) continue;
+    const groupName = colIdx.group >= 0 ? (r[colIdx.group]||'').trim() : '';
+    if(!groupName) continue;
+    // Пропускаем строки-итоги
+    if(groupName.toLowerCase().includes('итого') || groupName.toLowerCase().includes('всего')) continue;
+
+    const num = function(idx){
+      if(idx < 0) return 0;
+      const v = parseFloat((r[idx]||'').toString().replace(',', '.').replace(/\s/g,''));
+      return isNaN(v) ? 0 : v;
+    };
+    const o = num(colIdx.order);
+    const e = num(colIdx.excl);
+    const a = num(colIdx.avail);
+    const ap = num(colIdx.apps);
+    let p = num(colIdx.pct);
+    if(p > 1.5) p = p; // уже в процентах
+    else if(p <= 1.5 && p > 0) p = p * 100;
+    if(!p && a > 0) p = ap / a * 100;
+
+    groups.push({g: groupName, o: o, e: e, a: a, ap: ap, p: Math.round(p*10)/10, level: level});
+  }
+  return {groups: groups, level: level};
+}
+
+// ===== Агрегация =====
+function sumGroups(groups){
+  let o=0,e=0,a=0,ap=0;
+  groups.forEach(function(g){ o+=g.o; e+=g.e; a+=g.a; ap+=g.ap; });
+  const p = a > 0 ? Math.round(ap/a*1000)/10 : 0;
+  return {order:o, excl:e, avail:a, apps:ap, pct:p};
+}
+
+// ===== Главная логика =====
+let detail = {};
+let institutes = [];
+let total = {name:'ВСЕГО', order:0, excl:0, avail:0, apps:0, pct:0};
+let currentInst = null;
+let currentLevel = 'total';
+
+async function loadAll(){
+  const results = {};
+  const errors = [];
+
+  for(const sheet of SHEETS){
+    try{
+      const csv = await fetchSheetCSV(sheet.url);
+      const parsed = parseInstituteSheet(csv);
+      // Разделяем на bak и magasp по полю level
+      const bak = parsed.groups.filter(function(g){return g.level === 'bak';});
+      const magasp = parsed.groups.filter(function(g){return g.level === 'magasp';});
+      // Если уровень не определён — пробуем эвристику по названию группы
+      if(bak.length === 0 && magasp.length === parsed.groups.length){
+        const bakGroups = parsed.groups.filter(function(g){return /б-\d|бак/.test(g.g);});
+        if(bakGroups.length > 0){
+          const magGroups = parsed.groups.filter(function(g){return !/б-\d|бак/.test(g.g);});
+          bak.push(...bakGroups); magasp.length = 0; magasp.push(...magGroups);
+        }
+      }
+      const bakSum = sumGroups(bak);
+      const magaspSum = sumGroups(magasp);
+      const totalSum = sumGroups(parsed.groups);
+      results[sheet.name] = {
+        total: totalSum,
+        bak: {groups: bak, sum: bakSum},
+        magasp: {groups: magasp, sum: magaspSum}
+      };
+    } catch(err){
+      console.warn('Ошибка загрузки листа ' + sheet.name + ':', err);
+      errors.push(sheet.name + ': ' + err.message);
+      results[sheet.name] = {
+        total: {order:0,excl:0,avail:0,apps:0,pct:0},
+        bak: {groups:[], sum:{order:0,excl:0,avail:0,apps:0,pct:0}},
+        magasp: {groups:[], sum:{order:0,excl:0,avail:0,apps:0,pct:0}}
+      };
+    }
+  }
+
+  detail = results;
+  institutes = SHEETS.map(function(s){
+    const t = results[s.name].total;
+    return {name:s.name, order:t.order, excl:t.excl, avail:t.avail, apps:t.apps, pct:t.pct};
+  });
+
+  total = institutes.reduce(function(acc, r){
+    acc.order+=r.order; acc.excl+=r.excl; acc.avail+=r.avail; acc.apps+=r.apps; return acc;
+  }, {name:'ВСЕГО', order:0, excl:0, avail:0, apps:0});
+  total.pct = total.avail ? Math.round(total.apps/total.avail*1000)/10 : 0;
+
+  currentInst = institutes.length ? institutes[0].name : null;
+  renderAll();
+
+  if(errors.length){
+    const note = document.createElement('div');
+    note.className = 'empty-note';
+    note.style.marginTop = '12px';
+    note.textContent = 'Часть данных не загружена: ' + errors.join('; ');
+    document.getElementById('instPanel').appendChild(note);
+  }
+}
+
+function renderAll(){
+  // Статистика
+  document.getElementById('statOrder').textContent = fmt(total.order);
+  document.getElementById('statExcl').textContent = fmt(total.excl);
+  document.getElementById('statAvail').textContent = fmt(total.avail);
+  document.getElementById('statApps').textContent = fmt(total.apps);
+  document.getElementById('statPct').textContent = fmtPct(total.pct) + '%';
+  document.getElementById('instCountPill').textContent = institutes.length + ' институтов';
+
+  // Таблица
+  const tbody = document.getElementById('instTableBody');
+  function rowHtml(r, isTotal){
+    const cls = isTotal ? ' class="total-row"' : ' class="clickable"';
+    const dataAttr = isTotal ? '' : ' data-inst="' + r.name + '"';
+    return '<tr' + cls + dataAttr + '>' +
+      '<td class="inst">' + r.name + '</td>' +
+      '<td class="num">' + fmt(r.order) + '</td>' +
+      '<td class="num">' + fmt(r.excl) + '</td>' +
+      '<td class="num">' + fmt(r.avail) + '</td>' +
+      '<td class="num">' + fmt(r.apps) + '</td>' +
+      '<td>' + pctCellHtml(r.pct, 'total') + '</td>' +
+      '</tr>';
+  }
+  tbody.innerHTML = institutes.map(function(r){return rowHtml(r,false);}).join('') + rowHtml(total,true);
+
+  // Переключатели
+  buildInstToggle();
+  renderPanel();
+}
+
+function buildInstToggle(){
+  const el = document.getElementById('instToggle');
+  el.innerHTML = institutes.map(function(r){
+    return '<button class="toggle-btn' + (r.name===currentInst?' active':'') + '" data-inst="' + r.name + '">' + r.name + '</button>';
+  }).join('');
+}
+
+function renderPanel(){
+  const panel = document.getElementById('instPanel');
+  const instName = currentInst;
+  const d = detail[instName];
+  const levelLabels = {total:'Общее членство', bak:'Бакалавриат', magasp:'Магистратура + Аспирантура'};
+  const scaleForLevel = {total:'total', bak:'bak', magasp:'total'};
+
+  if(!d){
+    panel.innerHTML = '<div class="empty-note">Нет данных по институту «' + instName + '».</div>';
+    return;
+  }
+
+  let sum, groups, showGroups;
+  if(currentLevel === 'total'){
+    sum = d.total; groups = null; showGroups = false;
+  } else {
+    sum = d[currentLevel].sum; groups = d[currentLevel].groups; showGroups = true;
+  }
+
+  const scaleName = scaleForLevel[currentLevel];
+  const meta = colorFor(sum.pct, scaleName);
+  const capHtml = meta.cls === 'red' ? '<div class="cap">' + meta.label + '</div>' : '';
+
+  let html = '<div class="inst-panel-head"><h3>' + instName + '</h3>' +
+    '<span class="level-chip">' + levelLabels[currentLevel] + '</span></div>';
+
+  html += '<div class="mini-stats">' +
+      '<div class="mini-stat"><div class="l">По приказу</div><div class="v">' + fmt(sum.order) + '</div></div>' +
+      '<div class="mini-stat"><div class="l">Исключения</div><div class="v">' + fmt(sum.excl) + '</div></div>' +
+      '<div class="mini-stat"><div class="l">Доступно</div><div class="v">' + fmt(sum.avail) + '</div></div>' +
+      '<div class="mini-stat"><div class="l">Заявления</div><div class="v">' + fmt(sum.apps) + '</div></div>' +
+      '<div class="mini-stat pct"><div class="l">% вступаемости</div>' +
+      '<div class="badge-lg c-' + meta.cls + '">' + fmtPct(sum.pct) + '%</div>' + capHtml + '</div>' +
+    '</div>';
+
+  if(showGroups){
+    html += '<div class="legend">' + legendHtml(scaleName === 'bak' ? 'bak' : 'total') + '</div>';
+    if(groups.length === 0){
+      html += '<div class="empty-note">В этом институте нет групп на уровне «' + levelLabels[currentLevel] + '».</div>';
+    } else {
+      html += '<div class="table-card"><table><thead><tr>' +
+        '<th>Группа</th><th class="num">По приказу</th><th class="num">Искл.</th>' +
+        '<th class="num">Доступно</th><th class="num">Заявления</th><th>% вступаемости</th>' +
+        '</tr></thead><tbody>';
+      groups.forEach(function(g){
+        html += '<tr><td class="inst">' + g.g + '</td>' +
+          '<td class="num">' + fmt(g.o) + '</td>' +
+          '<td class="num">' + fmt(g.e) + '</td>' +
+          '<td class="num">' + fmt(g.a) + '</td>' +
+          '<td class="num">' + fmt(g.ap) + '</td>' +
+          '<td>' + pctCellHtml(g.p, scaleName) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+  }
+
+  panel.innerHTML = html;
+}
+
+// ===== Обработчики =====
+document.getElementById('instToggle').addEventListener('click', function(e){
+  const btn = e.target.closest('.toggle-btn');
+  if(!btn) return;
+  currentInst = btn.getAttribute('data-inst');
+  document.querySelectorAll('#instToggle .toggle-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-inst')===currentInst);
+  });
+  renderPanel();
+});
+
+document.getElementById('levelToggle').addEventListener('click', function(e){
+  const btn = e.target.closest('.toggle-btn');
+  if(!btn) return;
+  currentLevel = btn.getAttribute('data-level');
+  document.querySelectorAll('#levelToggle .toggle-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-level')===currentLevel);
+  });
+  renderPanel();
+});
+
+document.getElementById('instTableBody').addEventListener('click', function(e){
+  const row = e.target.closest('tr.clickable');
+  if(!row) return;
+  currentInst = row.getAttribute('data-inst');
+  buildInstToggle();
+  renderPanel();
+  document.getElementById('instToggle').scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+// ===== Старт =====
+loadAll();
+</script>
+</body>
+</html>
